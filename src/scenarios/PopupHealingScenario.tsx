@@ -11,7 +11,7 @@ export function PopupHealingScenario() {
   return (
     <div className="popup-scope">
       <div className="header">
-        <img src="./uipath-logo.png" alt="UiPath ロゴ" />
+        <img src="https://upload.wikimedia.org/wikipedia/en/8/80/UiPath_2019_Corporate_Logo.png" alt="会社のロゴ" />
         <h1>納品書登録</h1>
       </div>
 
