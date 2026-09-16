@@ -31,7 +31,7 @@ const SCENARIOS: ScenarioDef[] = [
     title: 'Target Definition Change',
     appName: 'TargetDefinitionChange',
     summary:
-      '電話番号セレクターの aaname / placeholder を大きく変更。Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。読取ごとにA面/B面がランダムに切り替わります。',
+      '電話番号セレクターの aaname / placeholder を大きく変更。Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。読取精度の比較対象。',
     Component: TargetDefinitionChangeScenario,
   },
   {
@@ -69,12 +69,20 @@ const APP_NAME_ALIASES: Record<ScenarioId, string[]> = {
   popup: ['Popup', 'PopupHealing'],
 }
 
+// URL parameter size limit for security
+const MAX_PARAM_LENGTH = 50
+
 function normalize(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]/g, '')
 }
 
 function resolveScenarioIdFromAppName(raw: string | null): ScenarioId | null {
   if (!raw) return null
+  // Validate parameter size to prevent potential DoS or injection attacks
+  if (raw.length > MAX_PARAM_LENGTH) {
+    console.warn(`Invalid appName parameter: exceeds maximum length of ${MAX_PARAM_LENGTH}`)
+    return null
+  }
   const target = normalize(raw)
   for (const s of SCENARIOS) {
     if (APP_NAME_ALIASES[s.id].some((alias) => normalize(alias) === target)) {
@@ -95,6 +103,11 @@ const LABEL_PRE_ALIASES = ['pre', 'before', '登録']
 
 function resolveIsPostFromLabelParam(raw: string | null): boolean | undefined {
   if (!raw) return undefined
+  // Validate parameter size
+  if (raw.length > MAX_PARAM_LENGTH) {
+    console.warn(`Invalid label parameter: exceeds maximum length of ${MAX_PARAM_LENGTH}`)
+    return undefined
+  }
   const trimmed = raw.trim()
   const lower = trimmed.toLowerCase()
   if (LABEL_POST_ALIASES.some((a) => a === lower || a === trimmed)) return true
