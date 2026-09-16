@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './scenarios.css'
 
 /**
  * Port of HealingAgent_popups.html — an overlay popup covers the form on
@@ -9,59 +10,13 @@ export function PopupHealingScenario() {
 
   return (
     <div className="popup-scope">
-      <style>{`
-        .popup-scope {
-          font-family: Arial, sans-serif; margin: 0; padding: 0;
-          background: linear-gradient(135deg, #2b2b2b, #1e1e1e); color: #333;
-          min-height: 600px; position: relative;
-        }
-        .popup-scope .header { text-align: center; padding: 20px; }
-        .popup-scope .header img { width: 150px; height: auto; margin-bottom: 10px; }
-        .popup-scope .header h1 { color: white; font-size: 24px; }
-        .popup-scope .form-container {
-          width: 100%; max-width: 800px; background: white; margin: 40px auto;
-          padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .popup-scope .form-group { margin-bottom: 20px; }
-        .popup-scope label { display: block; font-weight: bold; margin-bottom: 5px; }
-        .popup-scope input, .popup-scope select {
-          width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;
-          border-radius: 4px; box-sizing: border-box;
-        }
-        .popup-scope input:focus, .popup-scope select:focus { border-color: #007BFF; outline: none; }
-        .popup-scope .btn-submit {
-          display: inline-block; padding: 12px 24px; color: white; background-color: #28a745;
-          border: none; border-radius: 4px; cursor: pointer; font-size: 16px;
-        }
-        .popup-scope .btn-submit:hover { background-color: #218838; }
-        .popup-scope table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .popup-scope th, .popup-scope td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-        .popup-scope th { background: #f2f2f2; }
-        .popup-scope .overlay {
-          position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(0, 0, 0, 0.7); z-index: 1000; display: flex;
-          justify-content: center; align-items: center;
-        }
-        .popup-scope .popup {
-          background: white; padding: 20px; border-radius: 8px; text-align: center;
-          width: 90%; max-width: 400px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .popup-scope .popup h2 { font-size: 20px; margin-bottom: 10px; }
-        .popup-scope .popup p { font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
-        .popup-scope .popup .close-btn {
-          background: #007BFF; color: white; border: none; padding: 10px 20px;
-          border-radius: 4px; cursor: pointer; font-size: 14px;
-        }
-        .popup-scope .popup .close-btn:hover { background: #0056b3; }
-      `}</style>
-
       <div className="header">
-        <img src="https://upload.wikimedia.org/wikipedia/en/8/80/UiPath_2019_Corporate_Logo.png" alt="会社のロゴ" />
+        <img src="./uipath-logo.png" alt="UiPath ロゴ" />
         <h1>納品書登録</h1>
       </div>
 
       {overlayOpen && (
-        <div className="overlay" id="overlay" style={{ display: 'flex' }}>
+        <div className="overlay" id="overlay">
           <div className="popup">
             <h2>バージョンアップのお知らせ</h2>
             <p>
