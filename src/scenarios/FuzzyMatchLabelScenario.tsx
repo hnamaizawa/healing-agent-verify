@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import './scenarios.css'
 
 /**
  * Port of Fuzzy_match_label_pre.html / _post.html. The two reference pages
@@ -46,40 +47,6 @@ export function FuzzyMatchLabelScenario({ initialIsPost = false }: FuzzyMatchLab
 
   return (
     <div className="fml-scope">
-      <style>{`
-        .fml-scope { display: flex; justify-content: center; align-items: flex-start; }
-        .fml-scope .container {
-          background-color: white; padding: 20px; border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px;
-          transition: width 0.5s ease, height 0.5s ease;
-        }
-        .fml-scope .container h2 { text-align: center; margin-bottom: 20px; }
-        .fml-scope .form-group { margin-bottom: 15px; position: relative; }
-        .fml-scope .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .fml-scope .form-group input {
-          padding: 10px; border: 1px solid #ccc; border-radius: 5px;
-          box-sizing: border-box; width: 100%;
-        }
-        .fml-scope .button-container { display: flex; justify-content: space-between; }
-        .fml-scope .btn {
-          width: 100%; padding: 10px; background-color: #007bff; color: white;
-          border: none; border-radius: 5px; cursor: pointer;
-        }
-        .fml-scope .btn:hover { background-color: #0056b3; }
-        .fml-scope .delete-btn {
-          width: 48%; padding: 10px; background-color: #dc3545; color: white;
-          border: none; border-radius: 5px; cursor: pointer;
-        }
-        .fml-scope .delete-btn:hover { background-color: #b31e29; }
-        .fml-scope .message { text-align: center; color: green; margin-top: 20px; }
-        .fml-scope .screen { font-family: 'Arial', sans-serif; }
-        .fml-scope .screen .form-group label { color: #000000; }
-        .fml-scope .screen .form-group input { background-color: #e7f3ff; }
-        @media screen and (max-width: 768px) {
-          .fml-scope .container { max-width: 300px; }
-        }
-      `}</style>
-
       <div className="mb-4 flex items-center justify-center gap-2 text-sm">
         <span className="text-muted-foreground">ラベル変更シミュレーション:</span>
         <button
@@ -103,7 +70,7 @@ export function FuzzyMatchLabelScenario({ initialIsPost = false }: FuzzyMatchLab
       <div className="container" id="form-container">
         <h2>個人情報登録フォーム</h2>
 
-        <div className="screen" id="screen" style={{ display: 'block' }}>
+        <div className="screen" id="screen">
           <div className="form-group">
             <label htmlFor="name">名前</label>
             <input type="text" id="name" placeholder="名前を入力" ref={nameRef} />
