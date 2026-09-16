@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import './scenarios.css'
 
 /**
  * Port of HealingAgent_60秒ローディング.html — a 60 second loading screen
@@ -53,63 +54,6 @@ export function TimeoutHealingScenario() {
 
   return (
     <div className="timeout-scope">
-      <style>{`
-        .timeout-scope {
-          font-family: Arial, sans-serif; margin: 0; padding: 0;
-          background: linear-gradient(135deg, #2b2b2b, #1e1e1e); color: #333;
-          min-height: 600px;
-        }
-        .timeout-scope .header { text-align: center; padding: 20px; }
-        .timeout-scope .header img { width: 150px; height: auto; margin-bottom: 10px; }
-        .timeout-scope .header h1 { color: white; font-size: 24px; }
-        .timeout-scope .form-container, .timeout-scope .list-container {
-          width: 100%; max-width: 800px; background: white; margin: 40px auto;
-          padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          opacity: 1; transform: scale(1); transition: opacity 1s ease, transform 1s ease;
-        }
-        .timeout-scope .form-group { margin-bottom: 20px; }
-        .timeout-scope label { display: block; font-weight: bold; margin-bottom: 5px; }
-        .timeout-scope input, .timeout-scope select {
-          width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc;
-          border-radius: 4px; box-sizing: border-box;
-        }
-        .timeout-scope input:focus, .timeout-scope select:focus { border-color: #007BFF; outline: none; }
-        .timeout-scope .table-container { margin-top: 20px; overflow-x: auto; }
-        .timeout-scope table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        .timeout-scope th, .timeout-scope td {
-          border: 1px solid #ccc; padding: 10px; text-align: left;
-          vertical-align: middle; box-sizing: border-box;
-        }
-        .timeout-scope th { background-color: #f2f2f2; }
-        .timeout-scope .btn-add {
-          display: inline-block; padding: 10px 20px; color: white; background-color: #007BFF;
-          border: none; border-radius: 4px; cursor: pointer; text-decoration: none; margin-top: 10px;
-        }
-        .timeout-scope .btn-add:hover { background-color: #0056b3; }
-        .timeout-scope .form-footer { text-align: right; }
-        .timeout-scope .btn-submit {
-          display: inline-block; padding: 12px 24px; color: white; background-color: #28a745;
-          border: none; border-radius: 4px; cursor: pointer; font-size: 16px;
-        }
-        .timeout-scope .btn-submit:hover { background-color: #218838; }
-        .timeout-scope .delete-row-btn { color: red; cursor: pointer; }
-        .timeout-scope .delete-row-btn:hover { text-decoration: underline; }
-        .timeout-scope .completion-message {
-          text-align: center; font-size: 24px; font-weight: bold; color: #28a745; margin-bottom: 20px;
-        }
-        .timeout-scope .loading-screen {
-          position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(0, 0, 0, 0.7); display: flex; flex-direction: column;
-          justify-content: center; align-items: center; z-index: 1000; color: white; text-align: center;
-        }
-        .timeout-scope .loading-spinner {
-          border: 8px solid #f3f3f3; border-top: 8px solid #007BFF; border-radius: 50%;
-          width: 60px; height: 60px; animation: timeout-spin 1s linear infinite; margin-bottom: 10px;
-        }
-        .timeout-scope .loading-text { font-size: 18px; }
-        @keyframes timeout-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-      `}</style>
-
       {loading && (
         <div className="loading-screen" id="loading-screen">
           <div className="loading-spinner"></div>
@@ -118,7 +62,7 @@ export function TimeoutHealingScenario() {
       )}
 
       <div className="header">
-        <img src="https://upload.wikimedia.org/wikipedia/en/8/80/UiPath_2019_Corporate_Logo.png" alt="会社のロゴ" />
+        <img src="./uipath-logo.png" alt="UiPath ロゴ" />
         <h1>納品書登録</h1>
       </div>
 
