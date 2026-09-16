@@ -1,7 +1,7 @@
 # Healing Agent 検証アプリ (healing-agent-verify)
 
 UiPath **Healing Agent** の動作検証用に作られた、ログイン不要の UiPath Coded Web App です。
-Healing Agent 検証で使われている4つの単体テストページを1つのアプリに統合し、画面上部のナビゲーションまたは URL パラメータでシナリオを切り替えて検証できます。
+Healing Agent 検証で使われている4つの単体テストページを1つのアプリに統合し、画面上部のナビゲーションまたは URL パラメータでシナリオを切り替えられます。
 
 - **公開URL:** https://uijpnlabs-test.staging.uipath.host/healing-agent-verify
 - ログイン・認証は不要です（`@uipath/uipath-typescript` SDK / OAuth は組み込んでいません）。
@@ -10,12 +10,12 @@ Healing Agent 検証で使われている4つの単体テストページを1つ�
 
 | # | シナリオ | 内容 |
 |---|---|---|
-| 1 | **Target Definition Change** | ページ読み込みごとにA面（縦並び・ライト）/B面（横並び・ダーク）がランダムに切り替わる。B面の電話番号フィールドは `aaname` とプレースホルダーが大きく変更されており、Fuzzy Search では選択できず Semantic による Healing の検証に使う。 |
-| 2 | **Fuzzy Match Label** | 送信ボタンのラベルが「登録」（変更前）から「記録」（変更後）に変わるケースを、画面内トグルまたはURLパラメータで再現。Fuzzy Match Label による Healing の検証に使う。 |
-| 3 | **60秒タイムアウト** | ページを開くと60秒間ローディング画面が表示されたあとにフォームが現れる。自動化のデフォルトタイムアウトを誘発し、Healing Agent がタイムアウトを検知・復旧するケースの検証に使う。 |
-| 4 | **ポップアップ** | ページを開くと「バージョンアップのお知らせ」ポップアップが表示される。Healing Agent がポップアップを自動的に検知してクローズするケースの検証に使う。 |
+| 1 | **Target Definition Change** | ページ読み込みごとにA面（縦並び・ライト）/B面（横並び・ダーク）がランダムに切り替わる。B面の電話番号フィールドは aaname / placeholder が大きく変更されており、Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。 |
+| 2 | **Fuzzy Match Label** | 送信ボタンのラベルが「登録」（変更前）から「記録」（変更後）に変わるケースを、画面内トグルまたはURLパラメータで再現。Fuzzy Match Label Healing を検証します。 |
+| 3 | **60秒タイムアウト** | ページを開くと60秒間ローディング画面が表示されたあとにフォームが現れる。自動化のデフォルトタイムアウトを誘発し、Healing Agent による復旧を検証します。 |
+| 4 | **ポップアップ** | ページを開くと「バージョンアップのお知らせ」ポップアップが表示される。Healing Agent がポップアップを自動的に検知して閉じるケースを検証します。 |
 
-各シナリオのフォーム項目（id / label / placeholder）は元の検証用HTMLページと同一の値を保持しています。テスト対象の自動化（Coded Apps / RPA）を作る際は、実際の要素の `id` や表示ラベルを直接確認してください。
+各シナリオのフォーム項目（id / label / placeholder）は元の検証用HTMLページと同一の値を保持しています。テスト対象の自動化（Coded Apps / RPA）を作成・検証する際の基準として使用できます。
 
 ## 使い方
 
@@ -23,13 +23,13 @@ Healing Agent 検証で使われている4つの単体テストページを1つ�
 
 トップページのカード、または上部ナビゲーションのボタンからシナリオを選択します。
 
-- **再読み込み**ボタン：表示中のシナリオを再マウントします。「Target Definition Change」ではA面/B面を再抽選、「60秒タイムアウト」ではローディングタイマーをリセット、「ポップアップ」ではポップアップを再表示します（元アプリの「ページ再読み込みでランダムに切り替わる」動作をSPA上で再現したものです）。
+- **再読み込み**ボタン：表示中のシナリオを再マウントします。「Target Definition Change」ではA面/B面を再抽選、「60秒タイムアウト」ではローディング時間をリセット、「ポップアップ」ではポップアップを再度表示します。
 - **一覧へ**ボタン：トップページに戻ります。
 - 右上のテーマ切り替えボタンは、アプリ全体の見た目（ライト/ダーク）を切り替えるもので、各シナリオ自体のA面/B面とは無関係です。
 
 ### URLパラメータで直接開く
 
-`?appName=<値>` を付けると、対象シナリオを直接開いた状態でページを表示できます。シナリオを切り替えるとURLの `appName` も自動的に更新されるため、現在の画面をそのままブックマーク・共有できます。
+`?appName=<値>` を付けると、対象シナリオを直接開いた状態でページを表示できます。シナリオを切り替えるとURLの `appName` も自動的に更新されるため、URLをブックマークや共有できます。
 
 | シナリオ | 推奨値 | 受理する別表記 |
 |---|---|---|
@@ -95,17 +95,18 @@ uip codedapp pack dist -n healing-agent-verify --version <new-version>
 
 # 3. 公開
 uip codedapp publish -n healing-agent-verify --version <new-version> \
-  --tenant-id "REDACTED_TENANT_ID" \
-  --org-name "REDACTED_ORG_NAME"
+  --tenant-id "<TENANT_ID>" \
+  --org-name "<ORG_NAME>"
 
 # 4. デプロイ（既存アプリはアップグレードされ、URLは変わりません）
 uip codedapp deploy -n healing-agent-verify \
-  --folder-key "REDACTED_FOLDER_KEY" \
-  --tenant-id "REDACTED_TENANT_ID" \
-  --org-name "REDACTED_ORG_NAME"
+  --folder-key "<FOLDER_KEY>" \
+  --tenant-id "<TENANT_ID>" \
+  --org-name "<ORG_NAME>"
 ```
 
-- 環境: `staging` / 組織: `REDACTED_ORG_NAME` / テナント: `Test_Cloud_Lab` / デプロイ先フォルダ: `Shared`
+> **注意**: 上記の `<TENANT_ID>`、`<ORG_NAME>`、`<FOLDER_KEY>` は環境固有の値です。実際のデプロイ時は、これらの値を置き換えてください。これらは機密情報であるため、コミット履歴には保存しないでください。
+
 - `--tenant-id` は `uip codedapp publish` / `deploy` が要求する値です。テナント名からGUIDを調べる場合は次のコマンドを使います。
 
   ```bash
@@ -115,6 +116,10 @@ uip codedapp deploy -n healing-agent-verify \
 ## 実装メモ
 
 - Vite + React + TypeScript + Tailwind CSS v4 + `@uipath/apollo-wind`（UiPath Apollo Vertex デザインシステム、ダークモード切替つき）で構築。
-- ログイン不要の要件のため、`@uipath/uipath-typescript` SDK・OAuth（`uipath.json` の SDK 設定）は使用していません。`uip codedapp pack` が自動生成する `uipath.json` は空のプレースホルダーで、アプリの実行には影響しません。
+- ログイン不要の要件のため、`@uipath/uipath-typescript` SDK・OAuth（`uipath.json` の SDK 設定）は使用していません。`uip codedapp pack` が自動生成する `uipath.json` ファイルのみが含まれます。
 - 各シナリオは `src/scenarios/` 配下に1ファイルずつ実装されており、元の検証用HTMLページのHTML構造・CSS・JavaScriptロジックを忠実に移植しています。
 - `vite.config.ts` は `base: './'` を設定しています（UiPathプラットフォームがURLルーティングを行うため、相対パスが必須）。
+- セキュリティ対策として、シナリオのスタイルを外部CSS（`src/scenarios/scenarios.css`）に分離し、インラインスタイルを排除しています。
+- UiPath ロゴは `public/uipath-logo.png` として保管し、外部CDNへの依存を排除しています。
+- URLパラメータのバリデーション機能を実装し、入力値のサイズ制限（50文字）を設けています。
+- Content Security Policy（CSP）メタタグを `index.html` に設定し、XSS攻撃を軽減しています。
