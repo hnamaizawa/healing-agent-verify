@@ -55,7 +55,7 @@ export function FuzzyMatchLabelScenario({ initialIsPost = false }: FuzzyMatchLab
           onClick={() => setIsPost(false)}
           disabled={!isPost}
         >
-          変更前（登録）
+          変更前
         </button>
         <button
           type="button"
@@ -63,7 +63,7 @@ export function FuzzyMatchLabelScenario({ initialIsPost = false }: FuzzyMatchLab
           onClick={() => setIsPost(true)}
           disabled={isPost}
         >
-          変更後（記録）
+          変更後
         </button>
       </div>
 
