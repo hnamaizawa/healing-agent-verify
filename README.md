@@ -33,7 +33,7 @@ Healing Agent 検証で使われている4つの単体テストページを1つ�
 
 | シナリオ | 推奨値 | 受理する別表記 |
 |---|---|---|
-| Semantic | `Semantic` | `TargetDefinitionChange`, `TDC` |
+| Semantic | `Semantic` | — |
 | Fuzzy Match Label | `FuzzyMatchLabel` | `FuzzyMathLabel`, `FML` |
 | 60秒タイムアウト | `Timeout60Sec` | `Timeout`, `60SecTimeout`, `Timeout60s` |
 | ポップアップ | `Popup` | `PopupHealing` |

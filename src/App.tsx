@@ -63,7 +63,7 @@ const SCENARIOS: ScenarioDef[] = [
 // Extra accepted spellings per scenario for the `?appName=` query parameter,
 // matched case- and separator-insensitively (see normalize()).
 const APP_NAME_ALIASES: Record<ScenarioId, string[]> = {
-  tdc: ['Semantic', 'TargetDefinitionChange', 'TDC'],
+  tdc: ['Semantic'],
   fml: ['FuzzyMatchLabel', 'FuzzyMathLabel', 'FML'],
   timeout: ['Timeout60Sec', 'Timeout', '60SecTimeout', 'Timeout60s'],
   popup: ['Popup', 'PopupHealing'],
