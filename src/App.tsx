@@ -31,7 +31,7 @@ const SCENARIOS: ScenarioDef[] = [
     title: 'Semantic',
     appName: 'Semantic',
     summary:
-      '電話番号セレクターの aaname / placeholder を大きく変更。Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。読取精度の比較対象。',
+      '電話番号セレクターの aaname / placeholder を大きく変更。Fuzzy Search では救えず、Semantic による Healing を検証します。読取精度の比較対象。',
     Component: TargetDefinitionChangeScenario,
   },
   {
