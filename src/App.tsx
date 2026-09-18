@@ -28,8 +28,8 @@ interface ScenarioDef {
 const SCENARIOS: ScenarioDef[] = [
   {
     id: 'tdc',
-    title: 'Target Definition Change',
-    appName: 'TargetDefinitionChange',
+    title: 'Semantic',
+    appName: 'Semantic',
     summary:
       '電話番号セレクターの aaname / placeholder を大きく変更。Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。読取精度の比較対象。',
     Component: TargetDefinitionChangeScenario,
@@ -63,7 +63,7 @@ const SCENARIOS: ScenarioDef[] = [
 // Extra accepted spellings per scenario for the `?appName=` query parameter,
 // matched case- and separator-insensitively (see normalize()).
 const APP_NAME_ALIASES: Record<ScenarioId, string[]> = {
-  tdc: ['TargetDefinitionChange', 'TDC'],
+  tdc: ['Semantic', 'TargetDefinitionChange', 'TDC'],
   fml: ['FuzzyMatchLabel', 'FuzzyMathLabel', 'FML'],
   timeout: ['Timeout60Sec', 'Timeout', '60SecTimeout', 'Timeout60s'],
   popup: ['Popup', 'PopupHealing'],

@@ -10,7 +10,7 @@ Healing Agent 検証で使われている4つの単体テストページを1つ�
 
 | # | シナリオ | 内容 |
 |---|---|---|
-| 1 | **Target Definition Change** | ページ読み込みごとにA面（縦並び・ライト）/B面（横並び・ダーク）がランダムに切り替わる。B面の電話番号フィールドは aaname / placeholder が大きく変更されており、Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。 |
+| 1 | **Semantic** | ページ読み込みごとにA面（縦並び・ライト）/B面（横並び・ダーク）がランダムに切り替わる。B面の電話番号フィールドは aaname / placeholder が大きく変更されており、Fuzzy Search では救えず、Computer Vision（現在は Semantic）による Healing を検証します。 |
 | 2 | **Fuzzy Match Label** | 送信ボタンのラベルが「登録」（変更前）から「記録」（変更後）に変わるケースを、画面内トグルまたはURLパラメータで再現。Fuzzy Match Label Healing を検証します。 |
 | 3 | **60秒タイムアウト** | ページを開くと60秒間ローディング画面が表示されたあとにフォームが現れる。自動化のデフォルトタイムアウトを誘発し、Healing Agent による復旧を検証します。 |
 | 4 | **ポップアップ** | ページを開くと「バージョンアップのお知らせ」ポップアップが表示される。Healing Agent がポップアップを自動的に検知して閉じるケースを検証します。 |
@@ -23,7 +23,7 @@ Healing Agent 検証で使われている4つの単体テストページを1つ�
 
 トップページのカード、または上部ナビゲーションのボタンからシナリオを選択します。
 
-- **再読み込み**ボタン：表示中のシナリオを再マウントします。「Target Definition Change」ではA面/B面を再抽選、「60秒タイムアウト」ではローディング時間をリセット、「ポップアップ」ではポップアップを再度表示します。
+- **再読み込み**ボタン：表示中のシナリオを再マウントします。「Semantic」ではA面/B面を再抽選、「60秒タイムアウト」ではローディング時間をリセット、「ポップアップ」ではポップアップを再度表示します。
 - **一覧へ**ボタン：トップページに戻ります。
 - 右上のテーマ切り替えボタンは、アプリ全体の見た目（ライト/ダーク）を切り替えるもので、各シナリオ自体のA面/B面とは無関係です。
 
@@ -33,14 +33,14 @@ Healing Agent 検証で使われている4つの単体テストページを1つ�
 
 | シナリオ | 推奨値 | 受理する別表記 |
 |---|---|---|
-| Target Definition Change | `TargetDefinitionChange` | `TDC` |
+| Semantic | `Semantic` | `TargetDefinitionChange`, `TDC` |
 | Fuzzy Match Label | `FuzzyMatchLabel` | `FuzzyMathLabel`, `FML` |
 | 60秒タイムアウト | `Timeout60Sec` | `Timeout`, `60SecTimeout`, `Timeout60s` |
 | ポップアップ | `Popup` | `PopupHealing` |
 
 例:
 
-https://uijpnlabs-test.staging.uipath.host/healing-agent-verify?appName=TargetDefinitionChange  
+https://uijpnlabs-test.staging.uipath.host/healing-agent-verify?appName=Semantic  
 
 https://uijpnlabs-test.staging.uipath.host/healing-agent-verify?appName=FuzzyMatchLabel&label=pre  
 https://uijpnlabs-test.staging.uipath.host/healing-agent-verify?appName=FuzzyMatchLabel&label=post  
