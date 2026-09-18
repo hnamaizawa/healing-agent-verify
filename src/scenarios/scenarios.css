@@ -245,6 +245,10 @@
   width: 150px;
   height: auto;
   margin-bottom: 10px;
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .popup-scope .header h1 {
