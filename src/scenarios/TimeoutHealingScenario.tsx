@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './scenarios.css'
+import uipathLogo from '../assets/uipath-logo-mono.svg'
 
 /**
  * Port of HealingAgent_60秒ローディング.html — a 60 second loading screen
@@ -62,7 +63,7 @@ export function TimeoutHealingScenario() {
       )}
 
       <div className="header">
-        <img src="https://upload.wikimedia.org/wikipedia/en/8/80/UiPath_2019_Corporate_Logo.png" alt="会社のロゴ" />
+        <img src={uipathLogo} alt="UiPath ロゴ" />
         <h1>納品書登録</h1>
       </div>
 

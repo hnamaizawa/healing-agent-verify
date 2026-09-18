@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './scenarios.css'
+import uipathLogo from '../assets/uipath-logo-mono.svg'
 
 /**
  * Port of HealingAgent_popups.html — an overlay popup covers the form on
@@ -11,7 +12,7 @@ export function PopupHealingScenario() {
   return (
     <div className="popup-scope">
       <div className="header">
-        <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/UiPath_company_logo.svg" alt="UiPath ロゴ" />
+        <img src={uipathLogo} alt="UiPath ロゴ" />
         <h1>納品書登録</h1>
       </div>
 

@@ -120,6 +120,6 @@ uip codedapp deploy -n healing-agent-verify \
 - 各シナリオは `src/scenarios/` 配下に1ファイルずつ実装されており、元の検証用HTMLページのHTML構造・CSS・JavaScriptロジックを忠実に移植しています。
 - `vite.config.ts` は `base: './'` を設定しています（UiPathプラットフォームがURLルーティングを行うため、相対パスが必須）。
 - セキュリティ対策として、シナリオのスタイルを外部CSS（`src/scenarios/scenarios.css`）に分離し、インラインスタイルを排除しています。
-- ポップアップ／60秒タイムアウト画面のロゴはWikipedia上のUiPath公式ロゴ画像を参照しています（`img-src` のCSPで許可済み）。
+- ポップアップ／60秒タイムアウト画面のロゴは、単色（黒）版のUiPathロゴを `src/assets/uipath-logo-mono.svg` としてバンドルし、外部URLへの依存なしで表示しています。
 - URLパラメータのバリデーション機能を実装し、入力値のサイズ制限（50文字）を設けています。
 - Content Security Policy（CSP）メタタグを `index.html` に設定し、XSS攻撃を軽減しています。
