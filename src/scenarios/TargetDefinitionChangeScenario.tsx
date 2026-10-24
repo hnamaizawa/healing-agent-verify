@@ -99,7 +99,7 @@ export function TargetDefinitionChangeScenario() {
           </div>
         )}
 
-        <div className="message" id="message" style={{ display: messageVisible ? 'block' : 'none' }}>
+        <div className={messageVisible ? 'message is-visible' : 'message'} id="message">
           登録されました！
         </div>
       </div>

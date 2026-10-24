@@ -75,9 +75,14 @@
 }
 
 .fml-scope .message {
+  display: none;
   text-align: center;
   color: green;
   margin-top: 20px;
+}
+
+.fml-scope .message.is-visible {
+  display: block;
 }
 
 .fml-scope .screen {
@@ -154,9 +159,14 @@
 }
 
 .tdc-scope .message {
+  display: none;
   text-align: center;
   color: green;
   margin-top: 20px;
+}
+
+.tdc-scope .message.is-visible {
+  display: block;
 }
 
 .tdc-scope .screen-a {
