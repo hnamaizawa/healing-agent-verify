@@ -93,10 +93,10 @@ export function FuzzyMatchLabelScenario({ initialIsPost = false }: FuzzyMatchLab
           </div>
         </div>
 
-        <div className="message" id="message" style={{ display: message === 'submitted' ? 'block' : 'none' }}>
+        <div className={message === 'submitted' ? 'message is-visible' : 'message'} id="message">
           登録されました！
         </div>
-        <div className="message" id="deleteMessage" style={{ display: message === 'deleted' ? 'block' : 'none' }}>
+        <div className={message === 'deleted' ? 'message is-visible' : 'message'} id="deleteMessage">
           削除されました！
         </div>
       </div>
